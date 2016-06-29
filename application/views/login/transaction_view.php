@@ -5,8 +5,9 @@
 		  <tr>
 			<td>
 			
-				<?php echo $history;?>
-			
+				<?php 
+				echo $history;
+				?>
 			</td>
 		  </tr>
 		</tbody>

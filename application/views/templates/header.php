@@ -4,15 +4,20 @@
    <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="<?php echo base_url('bootstrap/css/bootstrap.min.css');?>">
+	<script src="<?php echo base_url('jquery-3.0.0.min');?>"></script>
+	<script src="<?php echo base_url('bootstrap/js/bootstrap.min.js');?>"></script>
+	<link rel="stylesheet" type="text/css" href="<? echo base_url('styles.css');?>">
+	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+	<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+	
  </head>
- <body background="https://wallpaperscraft.com/image/hand_card_money_online_purchase_laptop_80035_1920x1080.jpg" style="background-size:cover">
+ <body background="<?php echo base_url('images/body_background.jpg'); ?>" style="background-size:cover">
  
 	<br>
 	<div class="container">
-	  <div class="jumbotron" style = "text-align: center; background-image: url(http://cdn-pays.bnpparibas.com/wp-content/blogs.dir/177/files/2015/10/Key-page-header-950x230.jpg); background-size: 130%;">
+	  <div class="jumbotron img-rounded" style = "text-align: center; background-image: url(<?php echo base_url('images/header_background.jpg'); ?>); background-size: 130%;">
 		<h1 >Internet Banking</h1>
 	  </div>
 	</div>

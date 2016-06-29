@@ -39,6 +39,7 @@ class Home extends CI_Controller {
 			
 			if($result_history){
 				foreach($result_history as $row){
+					
 					$hist['history'] = $row->history;
 					$this->load->view('login/transaction_view', $hist);
 				}
@@ -172,6 +173,7 @@ class Home extends CI_Controller {
 		}
 	 
 	}
+	
 	 
 	function transfer(){
 		if($this->session->userdata('logged_in')){

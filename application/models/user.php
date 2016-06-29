@@ -38,7 +38,6 @@ class User extends CI_Model{
 		$this->db->from('transactions');
 		$this->db->where('account_no', $account_no);
 		$query = $this->db->get();
-		
 		return $query->result();
 		
 	}
