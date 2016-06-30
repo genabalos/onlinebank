@@ -17,6 +17,7 @@ class User extends CI_Model{
 			return false;
 		}
 	}
+	
 	 
 	function get_accounts($account_no){
 		$this->db->select('id, account_no, pin, first_name, last_name, balance');

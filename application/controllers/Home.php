@@ -110,6 +110,7 @@ class Home extends CI_Controller {
 		}
 	 }
 	 
+	 
 	function withdraw(){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
@@ -147,7 +148,7 @@ class Home extends CI_Controller {
 					$data['date'] = date('Y-m-d H:i:s',strtotime('+15 hour'));
 					
 					
-					$result_history = $this->user->get_transaction($data['account_no']); 
+					$result_history = $this->user->get_transaction($data['account_no']);
 				
 				if ($data['balance']-$data['withdraw_amount'] < 0){
 					$this->load->view('templates/header');
@@ -173,14 +174,39 @@ class Home extends CI_Controller {
 		}
 	 
 	}
+
+	 function check_account(){
+	    $account_no = $this->input->post('account_no');
+	    $transfer_amount = $this->input->post('transfer_amount');
+
+	   $result = $this->user->get_accounts($account_no);
+
+	   if($result){
+			 $sess_array = array();
+			 foreach($result as $row){
+			   $sess_array = array(
+					'account_no' => $row->account_no,
+					'first_name' => $row->first_name,
+					'last_name' => $row->last_name,
+					'balance' => $row->balance
+				);
+				
+			 }
+			 return TRUE;
+	   }else{
+		   
+		 $this->form_validation->set_message('check_account', 'Account No. does not exist!');
+		 return false;
+		 
+	   }
+	 }
 	
 	 
 	function transfer(){
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');		  
-			
-			 
-			$this->form_validation->set_rules('account_no', 'Account No.:', 'required|integer');
+					 
+			$this->form_validation->set_rules('account_no', 'Account No.:', 'required|callback_check_account');
 			$this->form_validation->set_rules('transfer_amount', 'Transfer Amount', 'required|integer');
 			
 			$data['transfer_amount'] = $this->input->post('transfer_amount');
@@ -258,7 +284,7 @@ class Home extends CI_Controller {
 	}
 	 
 
-	function logout(){ 
+	function logout(){
 		$this->session->unset_userdata('logged_in');
 		session_destroy();
 		redirect('home', 'refresh'); 
