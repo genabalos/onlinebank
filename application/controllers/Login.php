@@ -9,18 +9,56 @@ class Login extends CI_Controller {
 	}
 
 	function index(){
-	   
-		$this->load->helper(array('form'));
 
-		$this->load->view('templates/header');
-		$this->load->view('login/login_view');
-		$this->load->view('templates/footer');
+		if($this->session->userdata('logged_in')){
+			$session_data = $this->session->userdata('logged_in');
+	
+			$data['account_no'] = $session_data['account_no'];
+			$data['first_name'] = $session_data['first_name'];
+			$data['last_name'] = $session_data['last_name'];
+			$data['balance'] = $session_data['balance'];
+			
+			$result = $this->user->get_accounts($data['account_no']); 
+		
+			if($result){
+				foreach($result as $row){
+					$temporary = array(
+						'account_no' => $row->account_no,
+						'first_name' => $row->first_name,
+						'last_name' => $row->last_name,
+						'balance' => $row->balance
+					);
+				}
+			
+			}
+			
+			$this->load->view('templates/header');
+			$this->load->view('login/home_view', $temporary);
+			
+			$result_history = $this->user->get_transaction($data['account_no']); 
+			
+			if($result_history){
+				foreach($result_history as $row){
+					
+					$hist['history'] = $row->history;
+					$this->load->view('login/transaction_view', $hist);
+				}
+			}else{
+				$hist['history'] = "You have no records to display yet.";
+				$this->load->view('login/transaction_view', $hist);
+			}
+			
+			$this->load->view('templates/footer');
+			
+		}else{
+			$this->load->view('templates/header');
+			$this->load->view('login/login_view');
+			$this->load->view('templates/footer');
+		}
 	   
 	}
 	
 	function verifylogin(){
-	   //This method will have the credentials validation
-	   $this->load->library('form_validation');
 
 	   $this->form_validation->set_rules('account_no', 'Account No.', 'required');
 	   $this->form_validation->set_rules('pin', 'Pin', 'required|callback_check_database');

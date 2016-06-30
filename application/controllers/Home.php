@@ -48,18 +48,19 @@ class Home extends CI_Controller {
 				$this->load->view('login/transaction_view', $hist);
 			}
 			
-		}else{ 
+		}else{
 			redirect('login', 'refresh');	//If no session, redirect to login page
 		}
 		
 		$this->load->view('templates/footer');	 
 	}
+	
 	 
 	function deposit(){
 		 if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 	
-			$this->form_validation->set_rules('deposit_amount', 'Deposit Amount', 'required|integer');
+			$this->form_validation->set_rules('deposit_amount', 'Deposit Amount', 'required|integer|greater_than[0]');
 			 
 			$data['deposit_amount'] = $this->input->post('deposit_amount');
 			$data['id'] = $session_data['id'];
@@ -115,7 +116,7 @@ class Home extends CI_Controller {
 		if($this->session->userdata('logged_in')){
 			$session_data = $this->session->userdata('logged_in');
 			
-			$this->form_validation->set_rules('withdraw_amount', 'Withdraw Amount', 'required|integer');
+			$this->form_validation->set_rules('withdraw_amount', 'Withdraw Amount', 'required|integer|greater_than[0]');
 			
 			$data['withdraw_amount'] = $this->input->post('withdraw_amount');
 			$data['id'] = $session_data['id'];
@@ -207,7 +208,7 @@ class Home extends CI_Controller {
 			$session_data = $this->session->userdata('logged_in');		  
 					 
 			$this->form_validation->set_rules('account_no', 'Account No.:', 'required|callback_check_account');
-			$this->form_validation->set_rules('transfer_amount', 'Transfer Amount', 'required|integer');
+			$this->form_validation->set_rules('transfer_amount', 'Transfer Amount', 'required|integer|greater_than[0]');
 			
 			$data['transfer_amount'] = $this->input->post('transfer_amount');
 			$data['id'] = $session_data['id'];
