@@ -17,7 +17,7 @@ class Login extends CI_Controller {
 			$data['first_name'] = $session_data['first_name'];
 			$data['last_name'] = $session_data['last_name'];
 			$data['balance'] = $session_data['balance'];
-			
+		 
 			$result = $this->user->get_accounts($data['account_no']); 
 		
 			if($result){
@@ -31,23 +31,50 @@ class Login extends CI_Controller {
 				}
 			
 			}
-			
 			$this->load->view('templates/header');
+			
 			$this->load->view('login/home_view', $temporary);
 			
-			$result_history = $this->user->get_transaction($data['account_no']); 
+			$config = array();
+			$config['base_url'] = base_url() . '/index.php/home/index';
+			$config['total_rows'] = $this->user->record_count();
+			$config['per_page'] = 10;
+			$config['num_links'] = $this->user->record_count();;
+			$config['use_page_numbers']  = TRUE;
 			
-			if($result_history){
-				foreach($result_history as $row){
-					
-					$hist['history'] = $row->history;
-					$this->load->view('login/transaction_view', $hist);
-				}
+			$config['full_tag_open'] = '<ul class="pagination">';
+			$config['full_tag_close'] = '</ul>';
+			
+			$config['next_link'] = 'Next';
+			$config['next_tag_open'] = '<li class="next page">';
+			$config['next_tag_close'] = '</li>';
+
+			$config['prev_link'] = 'Previous';
+			$config['prev_tag_open'] = '<li class="prev page">';
+			$config['prev_tag_close'] = '</li>';
+			
+			$config['cur_tag_open'] = '<li class="active"><a href="">';
+			$config['cur_tag_close'] = '</a></li>';
+
+			$config['num_tag_open'] = '<li class="page">';
+			$config['num_tag_close'] = '</li>';
+			
+			$this->pagination->initialize($config);
+			$page = $this->uri->segment(3);
+			
+			$this->db->limit($config['per_page'], $this->uri->segment(3));
+			$this->db->select('id, account_no, history');
+			$this->db->where('account_no', $data['account_no']);
+			$this->db->order_by('id','desc');
+			$hist['query'] = $this->db->get('transactions', $config['per_page'], $this->uri->segment(3));
+			$hist['pagination'] = $this->pagination->create_links();
+			$hist['history'] = "You have no records to display yet.";
+	
+			if($hist['query']){
+				$this->load->view('login/transaction_view', $hist);
 			}else{
-				$hist['history'] = "You have no records to display yet.";
 				$this->load->view('login/transaction_view', $hist);
 			}
-			
 			$this->load->view('templates/footer');
 			
 		}else{

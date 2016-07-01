@@ -1,13 +1,33 @@
 
-	 <div class="container table-bordered table-sm" style="width:50%; background-color: white;">
-	  <table class="table table-hover">
+		<div class="container" style="width:50%; background-color: #f7f8f3;">
+			
+				
+				<table class="table table-hover table-sm">
+				<?php
+				if ($query->result()){
+				foreach($query->result() as $row){ ?>
+					<tr>
+						<td> 
+							<center>
+								<?php echo $row->history; ?>
+							</center>
+						</td>
+					</tr>
+				<?php }
+				}else{?>
+					<center>
+						<?php echo $history; ?>
+					</center>
+				<?php } ?>
+				
+				
+				</table>
+		</div>
 		
-		  <tr>
-			<td>
-				<center>
-				<?php echo $history; ?>
-				</center>
-			</td>
-		  </tr>
-	  </table>
-	</div>
+		<div class="container" style="width:50%; background-color: #f7f8f3;">
+			<center>
+				<?php echo $pagination; ?>
+			</center>
+		</div>
+	
+	

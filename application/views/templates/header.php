@@ -16,7 +16,7 @@
 		<br>
 		<div class="container">
 		  <div class="jumbotron img-rounded" style = "text-align: center; background-image: url(<?php echo base_url('images/header_background.jpg'); ?>); background-size: 130%;">
-			<h1>9Internet Banking</h1>
+			<h1>Internet Banking</h1>
 		  </div>
 		</div>
 		
@@ -28,7 +28,7 @@
 						  <a class="navbar-brand" href="<?php echo site_url('home') ?>">Internet Banking</a>
 						</div>
 						<ul class="nav navbar-nav">
-							<li><a href="<?php echo site_url('home') ?>">Home</a></li>
+							<li><a href="<?php echo site_url('home/index') ?>">Home</a></li>
 							<?php if ($this->session->userdata('logged_in')) { ?>
 							<li><a href="<?php echo site_url('home/deposit') ?>">Deposit</a></li>
 							<li><a href="<?php echo site_url('home/withdraw') ?>">Withdraw</a></li>

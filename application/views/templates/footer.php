@@ -3,7 +3,7 @@
 				<br><br>
 				<p>© Copyright 2016, ITDC Midyear Internship &nbsp;&nbsp;&nbsp;&nbsp;
 				
-					<a href="<?php echo site_url('home') ?>">Home</a> |
+					<a href="<?php echo site_url('home/index') ?>">Home</a> |
 					<?php if ($this->session->userdata('logged_in')) { ?>
 						<a href="<?php echo site_url('home/deposit') ?>">Deposit</a> |
 						<a href="<?php echo site_url('home/withdraw') ?>">Withdraw</a> |
