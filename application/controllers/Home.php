@@ -37,9 +37,11 @@ class Home extends CI_Controller {
 			
 			$config = array();
 			$config['base_url'] = base_url() . '/index.php/home/index';
-			$config['total_rows'] = $this->user->record_count();
 			$config['per_page'] = 10;
-			$config['num_links'] = $this->user->record_count();;
+			$config['num_links'] = $this->user->record_count();
+			$this->db->select('id, account_no, history');
+			$this->db->where('account_no', $data['account_no']);
+			$config['total_rows'] = $this->user->record_count();
 			$config['use_page_numbers']  = TRUE;
 			
 			$config['full_tag_open'] = '<ul class="pagination">';

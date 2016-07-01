@@ -37,17 +37,6 @@ class User extends CI_Model{
         return $this->db->count_all('transactions');
     }
 	
-	function fetch_transaction($account_no, $limit, $start){
-		$this->db->limit($limit, $start);
-		$this->db->select('id, account_no, history');
-		$this->db->from('transactions');
-		$this->db->where('account_no', $account_no);
-		$this->db->order_by('id','desc');
-		$query = $this->db->get();
-		
-		return $query->result();
-		
-	}
 	
 	function get_transaction($account_no){
 		
