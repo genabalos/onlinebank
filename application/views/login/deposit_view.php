@@ -10,11 +10,16 @@
 							<label for="deposit_amount" class="sr-only">Deposit Amount</label>
 							<input type="input" name="deposit_amount" class="form-control" placeholder="Enter amount to deposit" required autofocus>
 							<br>
-							<button class="btn btn-lg btn-primary btn-block" value="Deposit" name="deposit" type="submit" style=" background-color: #303030;">Deposit</button>
+							
+							<button class="btn btn-lg btn-primary btn-block" value="Deposit" name="deposit" type="submit" style=" background-color: #303030;" 
+									onclick="return confirm('Are you sure you wan to deposit?');">Deposit</button>
+							
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		
 		
 		

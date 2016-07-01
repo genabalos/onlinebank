@@ -12,7 +12,8 @@
 							<label for="transfer_amount" class="sr-only">Transfer Amount</label>
 							<input type="input" name="transfer_amount" class="form-control" placeholder="Enter amount to transfer" required autofocus>
 							<br>
-							<button class="btn btn-lg btn-primary btn-block" value="Transfer" name="transfer" type="submit" style=" background-color: #303030;">Transfer</button>
+							<button class="btn btn-lg btn-primary btn-block" value="Transfer" name="transfer" type="submit" style=" background-color: #303030;"
+									onclick="return confirm('Are you sure you wan to transfer?');">Transfer</button>
 						</form>
 					</div>
 				</div>

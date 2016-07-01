@@ -11,7 +11,8 @@
 							<label for="deposit_amount" class="sr-only">Withdraw Amount</label>
 							<input type="input" name="withdraw_amount" class="form-control" placeholder="Enter amount to withdraw" required autofocus>
 							<br>
-							<button class="btn btn-lg btn-primary btn-block" value="Withdraw" name="withdraw" type="submit" style=" background-color: #303030;">Withdraw</button>
+							<button class="btn btn-lg btn-primary btn-block" value="Withdraw" name="withdraw" type="submit" style=" background-color: #303030;"
+									onclick="return confirm('Are you sure you wan to withdraw?');">Withdraw</button>
 						</form>
 					</div>
 				</div>

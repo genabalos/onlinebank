@@ -23,9 +23,11 @@ DROP TABLE IF EXISTS `transactions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_no` varchar(10) NOT NULL,
-  `history` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `history` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -34,6 +36,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` VALUES (1,'2421151646','You deposited ₱1000 (2016-07-01 10:09:48)'),(2,'2421151646','You withdrew ₱725 (2016-07-01 10:10:24)'),(3,'2421151646','You transferred ₱1000 to account no. 6533179086 (2016-07-01 10:10:56)'),(4,'2421151646','You transferred ₱1000 to account no. 9821560463 (2016-07-01 10:16:52)');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -46,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-24 14:12:08
+-- Dump completed on 2016-07-01 10:26:26

@@ -35,9 +35,10 @@ class User extends CI_Model{
 	
 	function get_transaction($account_no){
 		
-		$this->db->select('account_no, history');
+		$this->db->select('id, account_no, history');
 		$this->db->from('transactions');
 		$this->db->where('account_no', $account_no);
+		$this->db->order_by('id','desc');
 		$query = $this->db->get();
 		return $query->result();
 		
@@ -58,6 +59,7 @@ class User extends CI_Model{
 		$this->db->insert('transactions', $transaction_history);
 		
 		redirect('home', 'refresh');
+		
 	}
 	 
 	function withdraw($data, $transaction_history){

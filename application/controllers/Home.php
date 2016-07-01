@@ -39,7 +39,7 @@ class Home extends CI_Controller {
 			
 			if($result_history){
 				foreach($result_history as $row){
-					
+					$hist['id'] = $row->id;
 					$hist['history'] = $row->history;
 					$this->load->view('login/transaction_view', $hist);
 				}
@@ -98,6 +98,7 @@ class Home extends CI_Controller {
 				$result_history = $this->user->get_transaction($data['account_no']); 
 			
 				$transaction_history = array(
+					
 					'account_no' => $data['account_no'],
 					'history' => "You deposited ₱".$data['deposit_amount']." (".$data['date'].")"
 				);

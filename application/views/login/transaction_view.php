@@ -9,6 +9,5 @@
 				</center>
 			</td>
 		  </tr>
-		
 	  </table>
 	</div>

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('bootstrap/css/bootstrap.min.css');?>">
 	<script src="<?php echo base_url('jquery-3.0.0.min');?>"></script>
 	<script src="<?php echo base_url('bootstrap/js/bootstrap.min.js');?>"></script>
+	<script language="JavaScript" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="<? echo base_url('styles.css');?>">
  </head>
  
@@ -15,7 +16,7 @@
 		<br>
 		<div class="container">
 		  <div class="jumbotron img-rounded" style = "text-align: center; background-image: url(<?php echo base_url('images/header_background.jpg'); ?>); background-size: 130%;">
-			<h1>Internet Banking</h1>
+			<h1>9Internet Banking</h1>
 		  </div>
 		</div>
 		
