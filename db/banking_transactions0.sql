@@ -36,7 +36,10 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (1,'2421151646','You deposited ₱1000 (2016-07-01 10:09:48)'),(2,'2421151646','You withdrew ₱725 (2016-07-01 10:10:24)'),(3,'2421151646','You transferred ₱1000 to account no. 6533179086 (2016-07-01 10:10:56)'),(4,'2421151646','You transferred ₱1000 to account no. 9821560463 (2016-07-01 10:16:52)');
+INSERT INTO `transactions` VALUES (1,'2421151646','You deposited ₱1000 (2016-07-01 10:09:48)'),
+(2,'2421151646','You withdrew ₱725 (2016-07-01 10:10:24)'),
+(3,'2421151646','You transferred ₱1000 to account no. 6533179086 (2016-07-01 10:10:56)'),
+(4,'2421151646','You transferred ₱1000 to account no. 9821560463 (2016-07-01 10:16:52)');
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

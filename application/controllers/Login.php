@@ -37,9 +37,11 @@ class Login extends CI_Controller {
 			
 			$config = array();
 			$config['base_url'] = base_url() . '/index.php/home/index';
-			$config['total_rows'] = $this->user->record_count();
 			$config['per_page'] = 10;
-			$config['num_links'] = $this->user->record_count();;
+			$config['num_links'] = 3;
+			//$this->db->select('id, account_no, history');
+			//$this->db->where('account_no', $data['account_no']);
+			$config['total_rows'] = $this->user->record_count();
 			$config['use_page_numbers']  = TRUE;
 			
 			$config['full_tag_open'] = '<ul class="pagination">';
@@ -62,7 +64,7 @@ class Login extends CI_Controller {
 			$this->pagination->initialize($config);
 			$page = $this->uri->segment(3);
 			
-			$this->db->limit($config['per_page'], $this->uri->segment(3));
+			//$this->db->limit($config['per_page'], $this->uri->segment(3));
 			$this->db->select('id, account_no, history');
 			$this->db->where('account_no', $data['account_no']);
 			$this->db->order_by('id','desc');
@@ -73,6 +75,7 @@ class Login extends CI_Controller {
 			if($hist['query']){
 				$this->load->view('login/transaction_view', $hist);
 			}else{
+				$hist['history'] = "You have no records to display yet.";
 				$this->load->view('login/transaction_view', $hist);
 			}
 			$this->load->view('templates/footer');
